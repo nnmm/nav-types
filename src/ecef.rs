@@ -226,6 +226,18 @@ impl<N: RealField> From<NVector<N>> for ECEF<N> {
     }
 }
 
+impl<N: RealField> From<Point3<N>> for ECEF<N> {
+    fn from(p: Point3<N>) -> ECEF<N> {
+        ECEF(p)
+    }
+}
+
+impl<N: RealField> From<ECEF<N>> for Point3<N> {
+    fn from(e: ECEF<N>) -> Point3<N> {
+        e.0
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
